@@ -34,3 +34,6 @@ venv/
 
 # python config file
 config.py
+
+# pychache if run from cmd
+__pycache__
