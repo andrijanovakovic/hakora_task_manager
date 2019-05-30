@@ -9,15 +9,15 @@ Server:
  1. `cd server`
  2. `pip install -r requirements.txt`
  3. `cp config_example.py config.py`
- 4. edit `config.py` file and change the following fields with your data:
-MAILBOX_LAYER_API_KEY
-MAIL_USERNAME
-MAIL_PASSWORD
-DEFAULT_EMAIL_SENDER_ACCOUNT
+ 4. edit `config.py` file and change the following fields with your data:<br />
+MAILBOX_LAYER_API_KEY<br />
+MAIL_USERNAME<br />
+MAIL_PASSWORD<br />
+DEFAULT_EMAIL_SENDER_ACCOUNT<br />
  5. You can change server configuration in `/server/__init__.py`, by changing the following line `app.config.from_object('config.DevelopmentConfig')` 
- 6. Now you have everything ready, try running:
-| Windows | 	`py -3 /server/run.py ` |
-| Linux/MacOS | `python3 /server/run.py` |
+ 6. Now you have everything ready, try running:<br />
+| Windows | 	`py -3 /server/run.py ` |<br />
+| Linux/MacOS | `python3 /server/run.py` |<br />
 
 Client:
 
