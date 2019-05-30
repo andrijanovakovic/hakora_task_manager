@@ -1,0 +1,6 @@
+flask
+mongoengine
+bcrypt
+requests
+blinker
+flask_mail
