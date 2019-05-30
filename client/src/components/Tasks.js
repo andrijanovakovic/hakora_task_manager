@@ -1,11 +1,13 @@
 import React from "react";
 
-export default class Main extends React.Component {
+class Tasks extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>Main</p>
+				<p>Tasks</p>
 			</div>
 		);
 	}
 }
+
+export default Tasks;
