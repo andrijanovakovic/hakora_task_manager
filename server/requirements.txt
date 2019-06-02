@@ -1,6 +1,7 @@
-flask
-mongoengine
-bcrypt
-requests
-blinker
-flask_mail
+flask==1.0.3
+mongoengine==0.17.0
+bcrypt==3.1.6
+requests==2.22.0
+blinker==1.4
+flask_mail==0.9.1
+PyJWT==1.7.1

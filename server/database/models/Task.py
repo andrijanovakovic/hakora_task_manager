@@ -2,7 +2,7 @@
     TASKS MODEL
 """
 
-from app import app
+from www import app
 import mongoengine
 import datetime
 
@@ -17,6 +17,10 @@ class Task(mongoengine.Document):
     task_creator_user_id = mongoengine.ObjectIdField(required=True)  # the one who created the task
 
     project_id = mongoengine.ObjectIdField(required=True)
+
+    start_date = mongoengine.DateTimeField(required=False, default=datetime.datetime.now())
+    end_date = mongoengine.DateTimeField(required=False)
+    planned_end_date = mongoengine.DateTimeField(required=False)
 
     created_at = mongoengine.DateTimeField(required=True, default=datetime.datetime.now())
     updated_at = mongoengine.DateTimeField(required=False, default=datetime.datetime.now())

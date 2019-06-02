@@ -12,3 +12,5 @@ if not app.config['DEBUG']:
 
 # import auth routes
 from routing.User import *
+from routing.Task import *
+from routing.Projects import *

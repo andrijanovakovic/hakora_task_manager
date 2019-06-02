@@ -1,0 +1,18 @@
+.tasks_main_container {
+	height: calc(100% - 42px);
+}
+
+.tasks_left_side {
+	padding: 6px;
+	border-right: 1px solid white;
+	background: #557a95;
+}
+
+.tasks_right_side {
+	padding: 6px;
+}
+
+.tasks_title {
+	font-weight: 100;
+	font-size: 4rem;
+}

@@ -1,33 +1,24 @@
-.home_main_container {
+.register_main_container {
 	height: 100vh;
 	width: 100vw;
 	background: rgb(59, 77, 116);
 	background: radial-gradient(circle, rgba(59, 77, 116, 1) 25%, rgba(85, 122, 149, 1) 100%);
 }
 
-.home_blur {
-	background: url("../static/images/stitched.jpg") no-repeat center center fixed;
-	background-size: cover;
-	overflow: hidden;
-	filter: blur(15px);
-	position: absolute;
-	height: 1000px;
-	top: -75px;
-	left: -75px;
-	right: -75px;
-	bottom: -75px;
-	color: #5d5c61;
-}
-
-.home_widget {
+.register_widget {
 	border-top: 2px solid rgba(255, 255, 255, 0.5);
 	border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 	width: 100%;
-	height: 500px;
+    height: 600px;
 	overflow: hidden;
 }
 
-.home_center {
+.form-group {
+    margin-bottom: 30px;
+    padding: 5px 10px;
+}
+
+.register_center {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -41,28 +32,46 @@
 	justify-content: center;
 }
 
-.home_small_text_container {
+.register_small_text_container {
 	width: 50%;
 }
 
-.home_big_and_light_text {
+.register_big_and_light_text {
 	font-weight: 100;
 	font-size: 7rem;
-	color: #3b4d74;
+	color:white;
 }
 
-.home_small_and_light_text {
+.register_small_and_light_text {
 	font-size: 1rem;
 	font-weight: 500;
 	color: black;
 }
 
-.home_button_group {
+.register_button_group {
 	width: 50%;
 	margin-top: 30px;
 }
 
-.home_my_button {
+.register_my_button {
 	background: #3b4d74;
     border: 0px;
+}
+
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.register_form {
+    display: flex;
+    flex-direction: row;
+}
+
+.form_div {
+    margin-right: 20px;
+}
+
+.register_header_container{
+    margin-bottom: 30px;
 }

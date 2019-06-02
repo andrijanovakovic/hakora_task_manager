@@ -1,0 +1,4 @@
+.projects_main_container {
+	height: calc(100% - 42px);
+    padding: 6px;
+}

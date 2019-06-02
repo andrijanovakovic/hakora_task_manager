@@ -1,6 +1,7 @@
 import re
 from www import app
 import requests
+import bcrypt
 
 
 def password_length_correct(password=""):
@@ -8,7 +9,7 @@ def password_length_correct(password=""):
 
 
 def username_length_correct(username=""):
-    return len(username) > 10
+    return len(username) > 8
 
 
 def email_valid(email=""):
@@ -35,3 +36,8 @@ def email_valid(email=""):
     # email is valid
     return True
 
+
+def verify_password(user_input_password, actual_user_password):
+    if bcrypt.checkpw(user_input_password.encode('utf-8'), actual_user_password.encode('utf-8')):
+        return True
+    return False
