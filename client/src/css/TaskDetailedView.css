@@ -1,0 +1,24 @@
+.tdv_title {
+	font-weight: 100;
+	font-size: 4rem;
+}
+
+.tdv_section_container {
+	padding-left: 5rem;
+}
+
+.tdv_subsection_container {
+	display: flex;
+	flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.tdv_section_title {
+	font-size: 3rem;
+	color: #ffcb88;
+	border-bottom: 2px solid #ffcb88;
+}
+
+.tdv_edit_task_form {
+}

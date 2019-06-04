@@ -7,6 +7,7 @@ import { login_user } from "../actions/user_actions";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
 import queryString from "query-string";
+import { check_token_valid } from "../actions/user_actions";
 
 class Login extends React.Component {
 	constructor(props) {
@@ -17,6 +18,7 @@ class Login extends React.Component {
 	}
 
 	componentDidMount() {
+		this.check_token_valid();
 		const url_params = queryString.parse(this.props.location.search);
 		if (url_params["msg"]) {
 			const { msg } = url_params;
@@ -37,7 +39,7 @@ class Login extends React.Component {
 		if (!nextProps.user_login_loading && nextProps.user_login_data.length !== 0) {
 			if (nextProps.user_login_data.success) {
 				localStorage.setItem("token", nextProps.user_login_data.token);
-				localStorage.setItem("user", nextProps.user_login_data.user);
+				localStorage.setItem("user", JSON.stringify(nextProps.user_login_data.user));
 				this.props.history.push("/app/tasks");
 			}
 		}
@@ -46,6 +48,13 @@ class Login extends React.Component {
 				toast.error(nextProps.user_login_fail.message);
 			}
 		}
+		if (!nextProps.check_token_valid_loading && nextProps.check_token_valid_data.length !== 0) {
+			this.props.history.push("/app/tasks");
+		}
+	}
+
+	check_token_valid() {
+		this.props.check_token_valid();
 	}
 
 	render() {
@@ -106,8 +115,23 @@ class Login extends React.Component {
 										</Form.Group>
 
 										<Form.Group>
-											<Button type="submit" disabled={this.props.user_login_loading} style={{ width: "100%" }}>
+											<Button
+												type="submit"
+												disabled={this.props.user_login_loading}
+												style={{ width: "100%", background: "#ffcb88", color: "#5D5C61" }}
+											>
 												{this.props.user_login_loading ? "Please wait..." : "Login!"}
+											</Button>
+										</Form.Group>
+
+										<Form.Group>
+											Don't have an account yet?
+											<Button
+												disabled={this.props.user_login_loading}
+												onClick={() => this.props.history.push("/register")}
+												style={{ width: "100%", background: "#938e94", border: 0 }}
+											>
+												Register
 											</Button>
 										</Form.Group>
 									</Form>
@@ -126,11 +150,15 @@ const mapStateToProps = (state) => {
 		user_login_loading: state.user.user_login_loading,
 		user_login_data: state.user.user_login_data,
 		user_login_fail: state.user.user_login_fail,
+		check_token_valid_loading: state.user.check_token_valid_loading,
+		check_token_valid_data: state.user.check_token_valid_data,
+		check_token_valid_fail: state.user.check_token_valid_fail,
 	};
 };
 
 const mapDispatchToProps = {
 	login_user,
+	check_token_valid,
 };
 
 export default connect(

@@ -3,14 +3,17 @@ import "../css/Register.css";
 import { Button, Form } from "react-bootstrap";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "../css/datepicker.css";
 import { register_new_user } from "../actions/user_actions";
 import { connect } from "react-redux";
 import { toast } from "react-toastify";
+import { check_token_valid } from "../actions/user_actions";
+import DatePicker from "./core/DatePicker";
 
 class Register extends React.Component {
+	componentDidMount() {
+		this.check_token_valid();
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if (!nextProps.user_registration_loading && nextProps.user_registration_data.length !== 0) {
 			if (nextProps.user_registration_data.message) {
@@ -22,6 +25,13 @@ class Register extends React.Component {
 				toast.error(nextProps.user_registration_fail.message);
 			}
 		}
+		if (!nextProps.check_token_valid_loading && nextProps.check_token_valid_data.length !== 0) {
+			this.props.history.push("/app/tasks");
+		}
+	}
+
+	check_token_valid() {
+		this.props.check_token_valid();
 	}
 
 	render() {
@@ -67,7 +77,7 @@ class Register extends React.Component {
 							const { values, touched, errors, handleChange, handleBlur, handleSubmit, setFieldValue } = props;
 							return (
 								<div>
-									<Form onSubmit={handleSubmit} className={"register_form"}>
+									<Form autoComplete={"off"} onSubmit={handleSubmit} className={"register_form"}>
 										<div className={"form_div"}>
 											<Form.Group>
 												<Form.Label>Email address</Form.Label>
@@ -144,7 +154,11 @@ class Register extends React.Component {
 											<Form.Group>
 												<Form.Label>End this nonsense!</Form.Label>
 												<br />
-												<Button type="submit" disabled={this.props.user_registration_loading} style={{ width: "100%" }}>
+												<Button
+													type="submit"
+													disabled={this.props.user_registration_loading}
+													style={{ width: "100%", background: "#ffcb88", color: "#5D5C61" }}
+												>
 													{this.props.user_registration_loading ? "Please wait..." : "Register!"}
 												</Button>
 											</Form.Group>
@@ -181,19 +195,13 @@ class Register extends React.Component {
 											<Form.Group>
 												<Form.Label>Date of birth</Form.Label>
 												<br />
-
 												<DatePicker
-													id="date_of_birth"
-													name="date_of_birth"
-													showYearDropdown
-													yearDropdownItemNumber={5}
-													selected={values.date_of_birth}
-													onChange={(date) => setFieldValue("date_of_birth", date)}
-													className={
-														errors.date_of_birth && touched.date_of_birth
-															? "text-input error form-control"
-															: "text-input form-control"
-													}
+													show_time_select={false}
+													selected_date={values.date_of_birth}
+													show_year_dropdown={true}
+													on_change={(date) => {
+														setFieldValue("date_of_birth", date);
+													}}
 												/>
 												{errors.date_of_birth && touched.date_of_birth && <p className="input-feedback">{errors.date_of_birth}</p>}
 											</Form.Group>
@@ -214,11 +222,15 @@ const mapStateToProps = (state) => {
 		user_registration_loading: state.user.user_registration_loading,
 		user_registration_data: state.user.user_registration_data,
 		user_registration_fail: state.user.user_registration_fail,
+		check_token_valid_loading: state.user.check_token_valid_loading,
+		check_token_valid_data: state.user.check_token_valid_data,
+		check_token_valid_fail: state.user.check_token_valid_fail,
 	};
 };
 
 const mapDispatchToProps = {
 	register_new_user,
+	check_token_valid,
 };
 
 export default connect(

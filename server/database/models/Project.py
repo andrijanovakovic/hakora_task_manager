@@ -14,8 +14,8 @@ class Project(Document):
     project_creator_user_id = ObjectIdField(required=True)
     project_leader_user_id = ObjectIdField(required=True)
 
-    created_at = DateTimeField(required=True, default=datetime.datetime.now())
-    updated_at = DateTimeField(required=False, default=datetime.datetime.now())
+    created_at = DateTimeField(required=True, default=datetime.datetime.utcnow())
+    updated_at = DateTimeField(required=False, default=datetime.datetime.utcnow())
 
     meta = {
         'db_alias': app.config["DEFAULT_DATABASE_ALIAS"],
@@ -24,7 +24,7 @@ class Project(Document):
 
     @classmethod
     def pre_save(cls, sender, document, **kwargs):
-        document.updated_at = datetime.datetime.now()
+        document.updated_at = datetime.datetime.utcnow()
 
 
 signals.pre_save.connect(Project.pre_save, sender=Project)

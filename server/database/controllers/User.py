@@ -6,7 +6,7 @@
 from database.models.User import User
 from mongoengine.queryset.visitor import Q
 from utilities.generators import generate_password_hash
-import mongoengine
+from typing import List
 
 
 def get_user_by_username(username: str) -> User:
@@ -22,6 +22,12 @@ def get_user_by_email(email: str) -> User:
 def get_user_by_username_or_email(username: str, email: str) -> User:
     user = User.objects(Q(username=username) | Q(email=email)).first()
     return user
+
+
+def fetch_all_users() -> List[User]:
+    query = User.objects(active=True).exclude('password')
+    users = list(query)
+    return users
 
 
 def create_new_user(user_data) -> User:

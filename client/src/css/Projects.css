@@ -1,4 +1,28 @@
 .projects_main_container {
 	height: calc(100% - 42px);
-    padding: 6px;
+	padding: 6px;
+	display: flex;
+	flex-direction: row;
+}
+
+.projects_add_project_card {
+	margin-right: 5px;
+	background: #b1a296;
+}
+
+.projects_add_project_card:hover {
+	cursor: pointer;
+}
+
+.projects_project_card {
+	margin-right: 5px;
+}
+.projects_project_card:hover {
+	cursor: pointer;
+	background: #eee;
+}
+
+.projects_title {
+	font-weight: 100;
+	font-size: 4rem;
 }

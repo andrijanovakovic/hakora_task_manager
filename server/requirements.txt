@@ -5,3 +5,4 @@ requests==2.22.0
 blinker==1.4
 flask_mail==0.9.1
 PyJWT==1.7.1
+bson==0.5.8

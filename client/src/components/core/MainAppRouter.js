@@ -13,7 +13,7 @@ import ProtectedRouter from "./ProtectedRouter";
 
 // components
 import Home from "../Home";
-import About from "../About";
+// import About from "../About";
 import Login from "../Login";
 import Register from "../Register";
 import ActivateUser from "../ActivateUser";
@@ -27,6 +27,7 @@ axios.interceptors.response.use(
 		if (error.response && error.response.status === 401) {
 			localStorage.clear();
 		}
+        return error;
 	},
 );
 axios.interceptors.request.use(function(config) {
@@ -42,7 +43,7 @@ class MainAppRouter extends React.Component {
 				<div className={"main_app_router"}>
 					<Switch>
 						<Route exact path="/" component={Home} />
-						<Route exact path="/about" component={About} />
+						{/* <Route exact path="/about" component={About} /> */}
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/activate_user/:active_hash" component={ActivateUser} />

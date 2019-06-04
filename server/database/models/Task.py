@@ -10,7 +10,7 @@ import datetime
 class Task(mongoengine.Document):
     title = mongoengine.StringField(required=True)
     description = mongoengine.StringField(required=True)
-    status = mongoengine.StringField(required=True)  # TODO: Define available statuses somewhere
+    status = mongoengine.StringField(required=True)
     finished = mongoengine.BooleanField(required=True, default=False)
 
     task_owner_user_id = mongoengine.ObjectIdField(required=True)  # the one who is doing the task
@@ -18,14 +18,12 @@ class Task(mongoengine.Document):
 
     project_id = mongoengine.ObjectIdField(required=True)
 
-    start_date = mongoengine.DateTimeField(required=False, default=datetime.datetime.now())
+    start_date = mongoengine.DateTimeField(required=False, default=datetime.datetime.utcnow())
     end_date = mongoengine.DateTimeField(required=False)
     planned_end_date = mongoengine.DateTimeField(required=False)
 
-    created_at = mongoengine.DateTimeField(required=True, default=datetime.datetime.now())
-    updated_at = mongoengine.DateTimeField(required=False, default=datetime.datetime.now())
-
-    # TODO: Task members need to be defined somewhere
+    created_at = mongoengine.DateTimeField(required=True, default=datetime.datetime.utcnow())
+    updated_at = mongoengine.DateTimeField(required=False, default=datetime.datetime.utcnow())
 
     meta = {
         'db_alias': app.config["DEFAULT_DATABASE_ALIAS"],
@@ -34,7 +32,7 @@ class Task(mongoengine.Document):
 
     @classmethod
     def pre_save(cls, sender, document, **kwargs):
-        document.updated_at = datetime.datetime.now()
+        document.updated_at = datetime.datetime.utcnow()
 
 
 mongoengine.signals.pre_save.connect(Task.pre_save, sender=Task)

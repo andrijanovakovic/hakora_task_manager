@@ -1,8 +1,24 @@
 import React from "react";
 import "../css/Home.css";
+import { connect } from "react-redux";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { check_token_valid } from "../actions/user_actions";
 
 class Home extends React.Component {
+	componentDidMount() {
+		this.check_token_valid();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (!nextProps.check_token_valid_loading && nextProps.check_token_valid_data.length !== 0) {
+			this.props.history.push("/app/tasks");
+		}
+	}
+
+	check_token_valid() {
+		this.props.check_token_valid();
+	}
+
 	render() {
 		return (
 			<div className={"home_main_container"}>
@@ -35,4 +51,19 @@ class Home extends React.Component {
 	}
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+	return {
+		check_token_valid_loading: state.user.check_token_valid_loading,
+		check_token_valid_data: state.user.check_token_valid_data,
+		check_token_valid_fail: state.user.check_token_valid_fail,
+	};
+};
+
+const mapDispatchToProps = {
+	check_token_valid,
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps,
+)(Home);

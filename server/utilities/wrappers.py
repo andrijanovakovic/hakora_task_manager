@@ -8,6 +8,7 @@ from database.controllers.User import get_user_by_username
 def jwt_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
+        token = None
         if 'authorization' in request.headers:
             token = request.headers.get('authorization')
 

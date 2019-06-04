@@ -5,14 +5,39 @@
 .tasks_left_side {
 	padding: 6px;
 	border-right: 1px solid white;
-	background: #557a95;
+	background: white;
+	color: #3b4d74;
 }
 
 .tasks_right_side {
 	padding: 6px;
 }
 
+.tasks_main_task_container:hover {
+	cursor: pointer;
+}
+
 .tasks_title {
 	font-weight: 100;
 	font-size: 4rem;
+}
+
+.tasks_jumbotron {
+	border-radius: 4px;
+	margin-bottom: 5px;
+	color: #3b4d74;
+	background: white;
+	padding: 1rem 0rem;
+}
+
+.tasks_tasks_title {
+	color: rgb(255, 203, 136);
+}
+
+.tasks_container {
+	margin-right: 0px;
+	margin-left: 0px;
+	padding: 0px 15px;
+	display: flex;
+	flex-direction: row;
 }

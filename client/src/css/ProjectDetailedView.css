@@ -1,0 +1,38 @@
+.pdv_title {
+	font-weight: 100;
+	font-size: 4rem;
+}
+
+.pdv_section_container {
+	padding-left: 5rem;
+}
+
+.pdv_subsection_container {
+	display: flex;
+	flex-direction: row;
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.pdv_section_title {
+	font-size: 3rem;
+	color: #ffcb88;
+	border-bottom: 2px solid #ffcb88;
+}
+
+.pdv_edit_task_form {
+}
+
+.pdv_task_container {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background: #557a95;
+    display: flex;
+    justify-content: space-between;
+}
+.pdv_task_container:hover {
+    cursor: pointer;
+    background: #66879f;
+}

@@ -19,10 +19,22 @@ body {
 	color: white;
 	justify-content: center;
 	height: 100%;
-    width: 100%;
+	width: 100%;
 }
 
 p {
-    margin: 0px;
-    padding: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.btn-primary {
+	background-color: #3b4d74;
+	border-color: #3b4d74;
+}
+.btn-primary:hover {
+	background-color: #557a95;
+	border-color: #557a95;
+}
+.input-feedback {
+	color: red;
 }

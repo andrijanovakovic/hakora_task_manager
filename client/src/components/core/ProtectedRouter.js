@@ -8,7 +8,9 @@ import { Nav, Navbar } from "react-bootstrap";
 // components
 import Tasks from "../Tasks";
 import Projects from "../Projects";
-import Settings from "../Settings";
+// import Settings from "../Settings";
+import TaskDetailedView from "../TaskDetailedView";
+import ProjectDetailedView from "../ProjectDetailedView";
 
 class ProtectedRouter extends React.Component {
 	constructor(props) {
@@ -36,7 +38,7 @@ class ProtectedRouter extends React.Component {
 	render() {
 		const { active_nav_link } = this.state;
 		return (
-			<div style={{ background: "#7395ae", height: "100vh", width: "100%" }}>
+			<div style={{ background: "#3b4d74", height: "100vh", width: "100%" }}>
 				<Nav variant="tabs" className={"mr-auto"}>
 					<Navbar.Brand style={{ marginRight: 30, marginLeft: 30 }}>HAKORA</Navbar.Brand>
 					<Nav.Item>
@@ -49,16 +51,18 @@ class ProtectedRouter extends React.Component {
 							Projects
 						</Nav.Link>
 					</Nav.Item>
-					<Nav.Item>
+					{/* <Nav.Item>
 						<Nav.Link onClick={() => this.handle_nav_item_click("/app/settings")} active={active_nav_link === "/app/settings"}>
 							Settings
 						</Nav.Link>
-					</Nav.Item>
+					</Nav.Item> */}
 				</Nav>
 				<Switch>
 					<Route path="/app/tasks" component={Tasks} />
 					<Route path="/app/projects" component={Projects} />
-					<Route path="/app/settings" component={Settings} />
+					{/* <Route path="/app/settings" component={Settings} /> */}
+					<Route path="/app/task/:task_id" component={TaskDetailedView} />
+					<Route path="/app/project/:project_id" component={ProjectDetailedView} />
 					<Redirect to="/app/tasks" />
 				</Switch>
 			</div>

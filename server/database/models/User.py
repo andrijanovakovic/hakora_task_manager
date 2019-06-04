@@ -27,8 +27,8 @@ class User(mongoengine.Document):
     show_as = mongoengine.StringField(required=False)
     date_of_birth = mongoengine.DateTimeField(required=False)
 
-    created_at = mongoengine.DateTimeField(required=True, default=datetime.datetime.now)
-    updated_at = mongoengine.DateTimeField(required=False, default=datetime.datetime.now)
+    created_at = mongoengine.DateTimeField(required=True, default=datetime.datetime.utcnow())
+    updated_at = mongoengine.DateTimeField(required=False, default=datetime.datetime.utcnow())
 
     meta = {
         'db_alias': app.config["DEFAULT_DATABASE_ALIAS"],
@@ -37,7 +37,7 @@ class User(mongoengine.Document):
 
     @classmethod
     def pre_save(cls, sender, document, **kwargs):
-        document.updated_at = datetime.datetime.now()
+        document.updated_at = datetime.datetime.utcnow()
 
 
 mongoengine.signals.pre_save.connect(User.pre_save, sender=User)

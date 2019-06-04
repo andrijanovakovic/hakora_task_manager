@@ -8,6 +8,9 @@ import {
 	USER_LOGIN_LOADING,
 	USER_LOGIN_SUCCESS,
 	USER_LOGIN_FAIL,
+	CHECK_TOKEN_VALID_LOADING,
+	CHECK_TOKEN_VALID_SUCCESS,
+	CHECK_TOKEN_VALID_FAIL,
 } from "../types/user_types";
 
 const initialState = {
@@ -20,6 +23,9 @@ const initialState = {
 	user_login_loading: false,
 	user_login_data: [],
 	user_login_fail: [],
+	check_token_valid_loading: false,
+	check_token_valid_data: [],
+	check_token_valid_fail: [],
 };
 
 export default function(state = initialState, action) {
@@ -44,6 +50,13 @@ export default function(state = initialState, action) {
 			return { ...state, user_login_loading: false, user_login_data: action.payload, user_login_fail: [] };
 		case USER_LOGIN_FAIL:
 			return { ...state, user_login_loading: false, user_login_data: [], user_login_fail: action.payload };
+
+		case CHECK_TOKEN_VALID_LOADING:
+			return { ...state, check_token_valid_loading: true, check_token_valid_data: [], check_token_valid_fail: [] };
+		case CHECK_TOKEN_VALID_SUCCESS:
+			return { ...state, check_token_valid_loading: false, check_token_valid_data: action.payload, check_token_valid_fail: [] };
+		case CHECK_TOKEN_VALID_FAIL:
+			return { ...state, check_token_valid_loading: false, check_token_valid_data: [], check_token_valid_fail: action.payload };
 
 		default:
 			return state;
