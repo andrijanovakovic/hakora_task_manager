@@ -30,10 +30,9 @@ def register_user():
     first_name = reqb["first_name"]
     last_name = reqb["last_name"]
     _date_of_birth = reqb["date_of_birth"]
-    date_of_birth = datetime.datetime.strptime(_date_of_birth, app.config['DEFAULT_DATETIME_FORMAT'])
 
     # check if username, password and email are filled
-    if not username or not password or not password_repeat or not email or not first_name or not last_name or not date_of_birth:
+    if not username or not password or not password_repeat or not email or not first_name or not last_name or not _date_of_birth:
         return jsonify({"success": False, "message": "All the fields need to be filled!"}), 500
 
     if not username_length_correct(username):
@@ -64,7 +63,7 @@ def register_user():
         "email": email,
         "first_name": first_name,
         "last_name": last_name,
-        "date_of_birth": date_of_birth,
+        "date_of_birth": _date_of_birth,
         "active_hash": generate_active_or_recover_hash_token(),
         "active_hash_expires": datetime.datetime.utcnow() + datetime.timedelta(minutes=30),
     })

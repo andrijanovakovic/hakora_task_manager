@@ -52,7 +52,6 @@ def create_new_task(current_user=None):
     task.task_creator_user_id = current_user.id
     task.project_id = ObjectId(t["project"]["id"])
     task.start_date = datetime.datetime.utcnow()
-    # task.planned_end_date = datetime.datetime.strptime(t["planned_end_date"], app.config['DEFAULT_DATETIME_FORMAT'])
     task.planned_end_date = t["planned_end_date"]
     task.save()
 
