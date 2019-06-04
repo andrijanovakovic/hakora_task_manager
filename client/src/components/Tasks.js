@@ -127,10 +127,10 @@ class Tasks extends React.Component {
 		return (
 			<div className={"tasks_main_container"} style={{ display: "flex", flexDirection: "row" }}>
 				<div className={"tasks_left_side"} style={{ flex: 1.5 }}>
-					<div>
+					{/* <div>
 						<p>See tasks for:</p>
 						<div>{this.render_sections()}</div>
-					</div>
+					</div> */}
 					<div style={{ marginTop: 10 }}>
 						<p>Something to do?</p>
 						<div>
@@ -143,12 +143,12 @@ class Tasks extends React.Component {
 							</Button>
 						</div>
 					</div>
-					<div style={{ marginTop: 10 }}>
+					{/* <div style={{ marginTop: 10 }}>
 						<p>Finished a lot of tasks today?</p>
 						<div>
 							<Button style={{ background: "#938e94", border: 0, width: "100%", marginTop: "5px" }}>Archive tasks</Button>
 						</div>
-					</div>
+					</div> */}
 				</div>
 				<div className={"tasks_right_side"} style={{ flex: 8 }}>
 					{this.props.my_tasks_loading ? (

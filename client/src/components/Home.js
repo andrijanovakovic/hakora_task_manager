@@ -34,9 +34,9 @@ class Home extends React.Component {
 							</p>
 						</div>
 						<ButtonGroup aria-label="Basic example" className={"home_button_group"}>
-							<Button className={"home_my_button"} variant="dark" onClick={() => this.props.history.push("/about")}>
+							{/* <Button className={"home_my_button"} variant="dark" onClick={() => this.props.history.push("/about")}>
 								About
-							</Button>
+							</Button> */}
 							<Button className={"home_my_button"} variant="dark" onClick={() => this.props.history.push("/login")}>
 								Login
 							</Button>
