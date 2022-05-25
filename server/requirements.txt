@@ -4,5 +4,5 @@ bcrypt==3.1.6
 requests==2.22.0
 blinker==1.4
 flask_mail==0.9.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 bson==0.5.8
